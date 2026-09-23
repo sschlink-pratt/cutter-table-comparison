@@ -42,7 +42,12 @@ function getSecond(author) {
         return educatedCutterTables["initialS"][asIndexECode(author[1])];
     }
     if (author.slice(0, 2) == "QU") {
-        return educatedCutterTables["Qu"][asIndexECode(author[2])];
+        // Avoid error w3hen just "QU" has been entered.
+        if (author.length > 2) {
+            return educatedCutterTables["Qu"][asIndexECode(author[2])];
+        } else {
+            return '';
+        }
     }
     // Consonant 
     if (VOWELSFORECODES.has(author[0]) === false) {
@@ -84,6 +89,11 @@ function getECode() {
         return '';
     }
 
+    if (author.slice(0, 1) == "Q" && author.slice(0,2) != "QU") {
+        eCodeEl.innerHTML = "";
+        return ''; 
+    }
+
     let eCode = author[0] + getSecond(author);
     eCode += getAdditionalECodes(author);
 
@@ -91,5 +101,5 @@ function getECode() {
     if (eCode.length < numberOfCharactersToDisplay) {
         numberOfCharactersToDisplay = eCode.length;
     }
-    eCodeEl.innerHTML = eCode.substring(0, numberOfCharactersToDisplay);
+    eCodeEl.innerHTML = "." + eCode.substring(0, numberOfCharactersToDisplay);
 }

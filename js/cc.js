@@ -127,6 +127,8 @@ function getBanerjeeCutter() {
         // reset numberOfCharactersToDisplay to the length of our code.
         numberOfCharactersToDisplay = cutterval.length;
     }
-    document.getElementById('banerjee-code').innerHTML = cutterval.substring(0, numberOfCharactersToDisplay);
+    // Note that Banerjee's site doesn't display the leading decimal, but I'm putting it
+    // in to match my other cutter numbers.
+    document.getElementById('banerjee-code').innerHTML = "." + cutterval.substring(0, numberOfCharactersToDisplay);
 
 }

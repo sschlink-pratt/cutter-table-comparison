@@ -38,5 +38,5 @@ function getHashCode() {
     if (hashCode.length < numberOfCharactersToDisplay) {
         numberOfCharactersToDisplay = hashCode.length;
     }
-    hashCodeEl.innerHTML = hashCode.substring(0, numberOfCharactersToDisplay);
+    hashCodeEl.innerHTML = "." + hashCode.substring(0, numberOfCharactersToDisplay);
 }

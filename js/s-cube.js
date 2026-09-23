@@ -63,6 +63,7 @@ function getCubeCode() {
         cubeNumberEl.innerHTML = "";
         return '';
     }
+
     let cubeCode = author[0] + getSecondAndThirdCharOfCubeCode(author[0], author[1], author[2]);
 
     // Use sCubeAdditionalLookUpTable to get numbers for PAIRS of additional characters. 
@@ -86,7 +87,7 @@ function getCubeCode() {
         // only display what we have.
         numberOfCharactersToDisplay = cubeCode.length;
     }
-    cubeNumberEl.innerHTML = cubeCode.substring(0, numberOfCharactersToDisplay);
+    cubeNumberEl.innerHTML = "." + cubeCode.substring(0, numberOfCharactersToDisplay);
 }
 function asCubeNum(letter1, letter2) {
     let num = 0;

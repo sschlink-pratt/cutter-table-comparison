@@ -169,6 +169,13 @@ function getCutter() {
 
     if (numberOfCharactersToDisplay <= 0) return;
 
+
+    // If starts with Q but not QU, we're bailing!
+    if (author.slice(0, 1) == "Q" && author.slice(0,2) != "QU") {
+        cutterNumberEl.innerHTML = "";
+        return; 
+    }
+
     const authorAsNumbers = author.split('').map(char => asNum(char));
     // Cutter code starts as first letter of the author's name
     let cutterCode = author[0];
@@ -176,7 +183,7 @@ function getCutter() {
     // If user only wants a Cutter code length of 1, or the author's name is only one character
     // we're done!
     if ((numberOfCharactersToDisplay === 1) || (author.length === 1)) {
-        cutterNumberEl.innerHTML = cutterCode;
+        cutterNumberEl.innerHTML = "." + cutterCode;
         return;
     }
 
@@ -222,5 +229,5 @@ function getCutter() {
     }
     // Finally, write the desired number of characters of the cutterCode
     // to the HTML element.
-    cutterNumberEl.innerHTML = cutterCode.substring(0, numberOfCharactersToDisplay);
+    cutterNumberEl.innerHTML = "." + cutterCode.substring(0, numberOfCharactersToDisplay);
 }
